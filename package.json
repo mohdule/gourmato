@@ -14,7 +14,8 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,7 +44,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "redux-devtools-extension": "^2.13.8"
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }
