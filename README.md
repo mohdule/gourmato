@@ -16,7 +16,7 @@ Make sure you have these tools installed :
 
 # Getting started :
   - Clone repo
-  - Create a file called `env.development.local`
+  - Create a new file `env.development.local`
   - Copy the contents of `.env.example` to `.env.development.local` you just created
   - Install dependencies using: `npm install`
-  - Start the app using: `npm start`1
+  - Start the app using: `npm start`
