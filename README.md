@@ -1,13 +1,16 @@
-# GOURMATO (CASE STUDY – FRONTEND ENGINEER)
-Gourmato is a web application that helps you find nearby resturants
+# GOURMATO
+Gourmato is a web application that helps you find nearby restaurants, leveraging the [Zomato API](https://developers.zomato.com/documentation)
 
-# Features :
-  - [/] ES6 & React
-  - [/] Eslint + Airbnb Style guide
-  - [/] Redux + Redux-Saga
-  - [/] Semantic UI React
-  - [] Responsive
-  - [] Unit testing
+# Todo :
+  - [x] ES6 & React
+  - [x] Eslint + Airbnb Style guide
+  - [x] Redux + Redux-Saga
+  - [x] Semantic UI React
+  - [ ] Responsive
+  - [ ] Use Navigator API to get user location
+  - [ ] Pagination
+  - [ ] Unit testing
+
 
 # Prerequesties :
 Make sure you have these tools installed :
@@ -16,7 +19,7 @@ Make sure you have these tools installed :
 
 # Getting started :
   - Clone repo
-  - Create a file called `env.development.local`
+  - Create a new file `env.development.local`
   - Copy the contents of `.env.example` to `.env.development.local` you just created
   - Install dependencies using: `npm install`
-  - Start the app using: `npm start`1
+  - Start the app using: `npm start`
