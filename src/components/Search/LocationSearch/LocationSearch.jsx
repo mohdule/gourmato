@@ -19,7 +19,10 @@ const LocationSearch = ({
 
   // Handlers
   const handleSearchChange = (e, { value }) => { setInputValue(value); };
-  const handleResultSelect = (e, { result }) => { selectLocation(result); };
+  const handleResultSelect = (e, { result }) => {
+    setInputValue('');
+    selectLocation(result);
+  };
 
   // Render return
   return (
