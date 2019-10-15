@@ -1,14 +1,11 @@
-import _ from 'lodash';
-import React, { useEffect, useState, useCallback } from 'react';
-import { Container, Search } from 'semantic-ui-react';
+import React, { useCallback } from 'react';
+import { Container, Header, Divider } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setLocation, loadSuggestions } from '../store/modules/location';
+import LocationSearch from '../components/Search/LocationSearch/LocationSearch';
 
 const SetLocation = () => {
-  // Local State
-  const [inputValue, setInputValue] = useState('');
-
   // State Selectors
   const suggestions = useSelector((state) => state.location.suggestions.items);
   const suggestionsLoading = useSelector((state) => state.location.suggestions.loading);
@@ -18,31 +15,21 @@ const SetLocation = () => {
   const requestSuggestions = useCallback((query) => dispatch(loadSuggestions(query)), [dispatch]);
   const setFoundLocation = useCallback((location) => dispatch(setLocation(location)), [dispatch]);
 
-  // Effects
-  useEffect(() => {
-    if (inputValue.length > 1) {
-      requestSuggestions(inputValue);
-    }
-  }, [inputValue, requestSuggestions]);
-
-  // Handlers
-  const handleSearchChange = (e, { value }) => setInputValue(value);
-  const handleResultSelect = (e, { result }) => {
-    setFoundLocation(result);
-  };
-
   // Render return
   return (
-    <Container>
-      <Search
+    <Container text textAlign="center" id="welcomePageContainer" style={{ paddingTop: '100px' }}>
+      <Header as="h1" content="Welcome to Gourmato" />
+      <p>Tasty food is just a couple steps away</p>
+      <Divider />
+      <p>
+        Please search and selct your location below,
+        or allow the browser to know your location
+      </p>
+      <LocationSearch
         loading={suggestionsLoading}
-        input={{ iconPosition: 'left' }}
-        onSearchChange={_.debounce(handleSearchChange, 500, {
-          leading: true,
-        })}
-        results={suggestions}
-        onResultSelect={handleResultSelect}
-        value={inputValue}
+        selectLocation={setFoundLocation}
+        suggestions={suggestions}
+        loadSuggestions={requestSuggestions}
       />
     </Container>
   );
