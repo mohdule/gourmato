@@ -5,7 +5,6 @@ import {
 } from 'semantic-ui-react';
 import RestaurantModal from '../Modals/RestaurantModal/RestaurantModal';
 
-
 const CardGroup = ({ items }) => (
   items.length
     ? (
@@ -18,6 +17,11 @@ const CardGroup = ({ items }) => (
     : <Message info content="It seems live you haven't made any sarch" />
 );
 
+CardGroup.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+// The Actual Card Group List
 const RestaurantList = ({ restaurants, loading }) => (
   <Container fluid>
     {loading
@@ -25,5 +29,10 @@ const RestaurantList = ({ restaurants, loading }) => (
       : <CardGroup items={restaurants} />}
   </Container>
 );
+
+RestaurantList.propTypes = {
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default RestaurantList;

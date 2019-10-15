@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, Rating, Image, Grid, Header, Icon,
 } from 'semantic-ui-react';
@@ -10,7 +11,7 @@ const RestaurantCard = ({ restaurant }) => (
     <Card.Content>
       <Grid>
         <Grid.Column width={4}>
-          <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
+          <Image src={restaurant.thumb_url ? restaurant.thumb_url : 'https://react.semantic-ui.com/images/wireframe/image.png'} />
         </Grid.Column>
         <Grid.Column width={12}>
           <Card.Header>
@@ -35,5 +36,19 @@ const RestaurantCard = ({ restaurant }) => (
     </Card.Content>
   </Card>
 );
+
+RestaurantCard.propTypes = {
+  restaurant: PropTypes.shape({
+    name: PropTypes.string,
+    locality: PropTypes.string,
+    rating: PropTypes.string,
+    address: PropTypes.string,
+    cuisines: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.string,
+    ]),
+    thumb_url: PropTypes.string,
+  }).isRequired,
+};
 
 export default RestaurantCard;
