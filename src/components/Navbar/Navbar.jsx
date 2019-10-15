@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import ChangeLocationModal from '../Modals/ChangeLocationModal/ChangeLocationModal';
 
 import './navbar.css';
 import RestaurantSearch from '../Search/RestaurantSearch/RestaurantSearch';
 
 const Navbar = ({ locationSearchProps }) => (
-  <Menu id="navbar" borderless inverted>
-    <Menu.Item>
-      <Menu.Header as="h1" content="Gourmato" />
-    </Menu.Item>
-    <Menu.Menu position="right">
+  <Menu id="navbar" borderless inverted fixed="top">
+    <Container>
+      <Menu.Item>
+        <Menu.Header as="h1" content="Gourmato" />
+      </Menu.Item>
       <Menu.Item>
         <RestaurantSearch />
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item position="right">
         <ChangeLocationModal locationSearchProps={locationSearchProps} />
       </Menu.Item>
-    </Menu.Menu>
+    </Container>
   </Menu>
 );
 
