@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar/Navbar';
 const Main = () => {
   // State Selectors
   const locationSuggestions = useSelector((state) => state.location.suggestions.items);
+  const currentLocation = useSelector((state) => state.location.current);
   const locationSuggestionsLoading = useSelector((state) => state.location.suggestions.loading);
 
   // Action Dispatchers
@@ -21,6 +22,7 @@ const Main = () => {
   // Props prepreation
   const searchProps = {
     location: {
+      currentLocation,
       loading: locationSuggestionsLoading || false,
       suggestions: locationSuggestions,
       selectLocation: setFoundLocation,

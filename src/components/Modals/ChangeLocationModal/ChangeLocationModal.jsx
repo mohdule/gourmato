@@ -1,20 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button, Icon } from 'semantic-ui-react';
+import {
+  Modal, Button, Icon, Segment,
+} from 'semantic-ui-react';
 import LocationSearch from '../../Search/LocationSearch/LocationSearch';
 
 const ChangeLocationModal = ({ locationSearchProps }) => (
   <Modal
+    closeIcon
     trigger={
       <Button>Change location</Button>
   }
-    closeIcon
   >
     <Modal.Header>
       <Icon name="marker" />
       Change Location
     </Modal.Header>
     <Modal.Content>
+      <Segment>
+        <b>Current Location :</b>
+        {' '}
+        {locationSearchProps.currentLocation.title}
+      </Segment>
       <LocationSearch
         loading={locationSearchProps.loading}
         suggestions={locationSearchProps.suggestions}
@@ -27,11 +34,21 @@ const ChangeLocationModal = ({ locationSearchProps }) => (
 
 ChangeLocationModal.propTypes = {
   locationSearchProps: PropTypes.shape({
-    value: PropTypes.string,
     loading: PropTypes.bool,
-    onSearchChange: PropTypes.func,
-    results: PropTypes.arrayOf(PropTypes.object),
-    onResultSelect: PropTypes.func,
+    selectLocation: PropTypes.func,
+    suggestions: PropTypes.arrayOf(PropTypes.object),
+    loadSuggestions: PropTypes.func,
+    currentLocation: PropTypes.shape({
+      entity_type: PropTypes.string,
+      entity_id: PropTypes.number,
+      title: PropTypes.string,
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      city_id: PropTypes.number,
+      city_name: PropTypes.string,
+      country_id: PropTypes.number,
+      country_name: PropTypes.string,
+    }),
   }).isRequired,
 };
 
