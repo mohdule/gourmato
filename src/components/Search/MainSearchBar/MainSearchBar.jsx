@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Message } from 'semantic-ui-react';
 
 const MainSearchBar = ({
-  categories, cuisines, search, loading,
+  categories, cuisines, search,
 }) => {
   const options = {
     categories: categories.length ? categories.map((cat) => ({
@@ -54,7 +54,7 @@ const MainSearchBar = ({
           multiple
           fluid
         />
-        <Form.Button content="Search" icon="search" loading={loading} disabled={loading} width="5" />
+        <Form.Button content="Search" icon="search" width="5" />
       </Form.Group>
     </Form>
   );
@@ -64,7 +64,6 @@ MainSearchBar.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   cuisines: PropTypes.arrayOf(PropTypes.object).isRequired,
   search: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default MainSearchBar;

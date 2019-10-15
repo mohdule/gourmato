@@ -81,7 +81,6 @@ const Main = () => {
                 categories={categories}
                 cuisines={cuisines}
                 search={findRestaurant}
-                loading={restaurantsLoading}
               />
               <Divider />
               <RestaurantsList restaurants={restaurants} loading={restaurantsLoading} />
