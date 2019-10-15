@@ -13,10 +13,7 @@ const SetLocation = () => {
   // Action Dispatchers
   const dispatch = useDispatch();
   const requestSuggestions = useCallback((query) => dispatch(loadSuggestions(query)), [dispatch]);
-  const setFoundLocation = useCallback((location) => {
-    console.log('firign outside', location)
-    return dispatch(setLocation(location))
-  }, [dispatch]);
+  const setFoundLocation = useCallback((location) => dispatch(setLocation(location)), [dispatch]);
 
   // Render return
   return (
