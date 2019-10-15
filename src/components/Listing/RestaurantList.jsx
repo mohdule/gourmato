@@ -14,7 +14,7 @@ const CardGroup = ({ items }) => (
         ))}
       </Card.Group>
     )
-    : <Message info content="It seems live you haven't made any sarch" />
+    : <Message info content="No results are found" />
 );
 
 CardGroup.propTypes = {
@@ -26,7 +26,18 @@ const RestaurantList = ({ restaurants, loading }) => (
   <Container fluid>
     {loading
       ? <Loader active content="Searching..." />
-      : <CardGroup items={restaurants} />}
+      : (
+        <>
+          <p>
+            Showing
+            {' '}
+            <b>{restaurants.length}</b>
+            {' '}
+            results
+          </p>
+          <CardGroup items={restaurants} />
+        </>
+      )}
   </Container>
 );
 
