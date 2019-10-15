@@ -3,8 +3,7 @@ import { Search } from 'semantic-ui-react';
 
 const RestaurantSearch = () => (
   <Search
-    input={{ placeholder: 'Search a for restaurant...' }}
-    fluid
+    input={{ placeholder: 'Search a for restaurant...', iconPosition: 'left' }}
   />
 );
 
