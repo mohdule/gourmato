@@ -3,7 +3,7 @@ import { Search } from 'semantic-ui-react';
 
 const RestaurantSearch = () => (
   <Search
-    input={{ placeholder: 'Search a for restaurant...', iconPosition: 'left' }}
+    input={{ placeholder: 'Search for a restaurant...', iconPosition: 'left' }}
   />
 );
 
