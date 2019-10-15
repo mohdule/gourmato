@@ -13,3 +13,7 @@ body {
   min-height: 100%;
   min-width: 100%
 }
+
+#mainContainer {
+  margin-top: 7em;
+}
