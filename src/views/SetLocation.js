@@ -13,17 +13,19 @@ const SetLocation = () => {
   // Action Dispatchers
   const dispatch = useDispatch();
   const requestSuggestions = useCallback((query) => dispatch(loadSuggestions(query)), [dispatch]);
-  const setFoundLocation = useCallback((location) => dispatch(setLocation(location)), [dispatch]);
+  const setFoundLocation = useCallback((location) => {
+    console.log('firign outside', location)
+    return dispatch(setLocation(location))
+  }, [dispatch]);
 
   // Render return
   return (
     <Container text textAlign="center" id="welcomePageContainer" style={{ paddingTop: '100px' }}>
       <Header as="h1" content="Welcome to Gourmato" />
-      <p>Tasty food is just a couple steps away</p>
+      <p>Tasty food is just one steps away</p>
       <Divider />
       <p>
-        Please search and selct your location below,
-        or allow the browser to know your location
+        Please search and select your location below
       </p>
       <LocationSearch
         loading={suggestionsLoading}
