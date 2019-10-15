@@ -1,4 +1,4 @@
-# GOURMATO (CASE STUDY – FRONTEND ENGINEER)
+# GOURMATO
 Gourmato is a web application that helps you find nearby restaurants, leveraging the [Zomato API](https://developers.zomato.com/documentation)
 
 # Todo :
