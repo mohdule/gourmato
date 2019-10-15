@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Container, Header, Loader, Divider, Button,
-} from 'semantic-ui-react';
+  Container, Header, Loader, Divider } from 'semantic-ui-react';
 
 import { loadSuggestions, setLocation } from '../store/modules/location';
 import { loadRestaurants } from '../store/modules/restaurants';
