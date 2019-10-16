@@ -25,10 +25,10 @@ const MainSearchBar = ({
 
   // Handlers
   const onSearch = () => {
-    if (categoriesIds.length && cuisinesIds.length) {
+    if (categoriesIds.length || cuisinesIds.length) {
       search(categoriesIds, cuisinesIds);
     } else {
-      setError('Please make sure you select at one category and one cuisine type at least');
+      setError('Please make sure you choose at least one category or cuisine type !');
     }
   };
 
