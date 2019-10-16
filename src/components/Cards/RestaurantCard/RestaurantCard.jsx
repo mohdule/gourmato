@@ -21,6 +21,10 @@ const RestaurantCard = ({ restaurant, ...otherProps }) => (
             User rating:
             {' '}
             <Rating icon="star" maxRating={5} rating={restaurant.rating} disabled />
+            {' '}
+            (
+            {restaurant.rating}
+            )
           </Card.Header>
           <Card.Description>
             <br />

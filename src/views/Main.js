@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Container, Header, Loader, Divider,
+  Container, Header, Loader, Divider, Dropdown,
 } from 'semantic-ui-react';
 
 import { loadSuggestions, setLocation } from '../store/modules/location';
@@ -15,6 +15,11 @@ import MainSearchBar from '../components/Search/MainSearchBar/MainSearchBar';
 import RestaurantsList from '../components/Listing/RestaurantList';
 
 const Main = () => {
+  // ------------|
+  // Local State |
+  // ------------|
+  const [items, setItems] = useState([]);
+
   // ----------------|
   // State Selectors |
   // ----------------|
@@ -81,6 +86,27 @@ const Main = () => {
     loadAllCuisines();
   }, [loadAllCategories, loadAllCuisines]);
 
+  useEffect(() => {
+    setItems(restaurants);
+  }, [restaurants]);
+
+  // ---------|
+  // Handlers |
+  // ---------|
+  const sortItems = (e, { value }) => {
+    e.preventDefault();
+    if (value === 'htl') {
+      return setItems(
+        items.slice(0).sort((a, b) => parseFloat(b.rating, 10) - parseFloat(a.rating, 10)),
+      );
+    } if (value === 'lth') {
+      return setItems(
+        items.slice(0).sort((a, b) => parseFloat(a.rating, 10) - parseFloat(b.rating, 10)),
+      );
+    }
+    return setItems(restaurants);
+  };
+
   // Props prepreation
   const searchProps = {
     location: {
@@ -96,6 +122,12 @@ const Main = () => {
       loadSuggestions: findRestaurantByName,
     },
   };
+
+  const sortOptions = [
+    { key: 'default', value: 'default', text: 'Default' },
+    { key: 'high-rating', value: 'htl', text: 'Rating: High to low' },
+    { key: 'low-rating', value: 'lth', text: 'Rating: Low to high' },
+  ];
 
   // --------------|
   // Render Return |
@@ -121,7 +153,17 @@ const Main = () => {
                 getCuisines={loadAllCuisines}
               />
               <Divider />
-              <RestaurantsList restaurants={restaurants} loading={restaurantsLoading} />
+              Sort by:
+              {' '}
+              {' '}
+              <Dropdown
+                labeled
+                inline
+                options={sortOptions}
+                defaultValue={sortOptions[0].value}
+                onChange={sortItems}
+              />
+              <RestaurantsList restaurants={items} loading={restaurantsLoading} />
               <Fab circular />
             </>
           )}
