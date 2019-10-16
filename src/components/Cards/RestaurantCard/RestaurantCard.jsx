@@ -6,8 +6,9 @@ import {
 
 import './restaurantCard.css';
 
-const RestaurantCard = ({ restaurant }) => (
-  <Card id="restaurantCard">
+const RestaurantCard = ({ restaurant, ...otherProps }) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <Card id="restaurantCard" {...otherProps}>
     <Card.Content>
       <Grid>
         <Grid.Column width={4}>
