@@ -4,13 +4,18 @@ import {
   Card, Loader, Message, Container,
 } from 'semantic-ui-react';
 import RestaurantModal from '../Modals/RestaurantModal/RestaurantModal';
+import RestaurantCard from '../Cards/RestaurantCard/RestaurantCard';
 
 const CardGroup = ({ items }) => (
   items.length
     ? (
       <Card.Group itemsPerRow={2}>
         {items.map((el) => (
-          <RestaurantModal key={el.id} restaurant={el} />
+          <RestaurantModal
+            key={el.id}
+            restaurant={el}
+            trigger={<RestaurantCard restaurant={el} />}
+          />
         ))}
       </Card.Group>
     )
