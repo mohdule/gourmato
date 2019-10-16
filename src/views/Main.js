@@ -117,6 +117,8 @@ const Main = () => {
                 categories={categories}
                 cuisines={cuisines}
                 search={findRestaurants}
+                getCategories={loadAllCategories}
+                getCuisines={loadAllCuisines}
               />
               <Divider />
               <RestaurantsList restaurants={restaurants} loading={restaurantsLoading} />
