@@ -34,7 +34,7 @@ export default function (state = initialState, { type, payload }) {
       return {
         ...state,
         loading: false,
-        error: '',
+        error: payload,
         all: [],
       };
     default:
