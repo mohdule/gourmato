@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import {
   Modal, Image, Rating, Header, Container, Grid, List, Button,
 } from 'semantic-ui-react';
-import RestaurantCard from '../../Cards/RestaurantCard/RestaurantCard';
 
-const RestaurantModal = ({ restaurant }) => (
+const RestaurantModal = ({ restaurant, trigger }) => (
   <Modal
-    trigger={<RestaurantCard restaurant={restaurant} />}
+    trigger={trigger}
     centered={false}
     closeIcon
   >
@@ -23,9 +22,10 @@ const RestaurantModal = ({ restaurant }) => (
       <br />
       <Container text textAlign="center">
         <Header content={restaurant.name} />
-        <p>{restaurant.localityVerbose}</p>
+        <p>{restaurant.locality_verbose}</p>
         <small>{restaurant.highlights.join(', ')}</small>
-        <Rating rating={parseInt(restaurant.rating, 10)} maxRating={5} icon="star" />
+        <br />
+        <Rating rating={parseInt(restaurant.rating, 10)} maxRating={5} icon="star" disabled />
       </Container>
     </Modal.Header>
     <Modal.Content>
@@ -38,7 +38,7 @@ const RestaurantModal = ({ restaurant }) => (
             </List.Item>
             <List.Item>
               <List.Icon name="phone" />
-              {Array.isArray(restaurant.phoneNumbers) ? restaurant.phoneNumbers.join(' / ') : restaurant.phoneNumbers}
+              {Array.isArray(restaurant.phone_numbers) ? restaurant.phone_numbers.join(' / ') : restaurant.phone_numbers}
             </List.Item>
           </List>
         </Grid.Column>
@@ -46,12 +46,12 @@ const RestaurantModal = ({ restaurant }) => (
           <List.Item>
             <List.Icon name="money" />
             <b>Average Cost For Two: </b>
-            {restaurant.averageCostForTwo ? `${restaurant.averageCostForTwo} ${restaurant.currency}` : 'unknown'}
+            {restaurant.average_cost_for_two ? `${restaurant.average_cost_for_two} ${restaurant.currency}` : 'unknown'}
           </List.Item>
           <List.Item>
             <List.Icon name="money" />
             <b>Price range: </b>
-            {restaurant.priceRange ? `${restaurant.priceRange} ${restaurant.currency}` : 'unknown'}
+            {restaurant.price_range ? `${restaurant.price_range} ${restaurant.currency}` : 'unknown'}
           </List.Item>
           <List.Item>
             <List.Icon name="food" />
@@ -62,28 +62,29 @@ const RestaurantModal = ({ restaurant }) => (
       </Grid>
     </Modal.Content>
     <Modal.Actions>
-      <Button as="a" target="_blank" href={restaurant.menuUrl} content="View Menu" icon="list" />
-      <Button as="a" target="_blank" href={restaurant.photosUrl} content="View Images" icon="image" />
+      <Button as="a" target="_blank" href={restaurant.menu_url} content="View Menu" icon="list" />
+      <Button as="a" target="_blank" href={restaurant.photos_url} content="View Images" icon="image" />
     </Modal.Actions>
   </Modal>
 );
 
 RestaurantModal.propTypes = {
+  trigger: PropTypes.node.isRequired,
   restaurant: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     rating: PropTypes.string,
     highlights: PropTypes.arrayOf(PropTypes.string),
-    phoneNumbers: PropTypes.string,
+    phone_numbers: PropTypes.string,
     address: PropTypes.string,
     locality: PropTypes.string,
-    localityVerbose: PropTypes.string,
+    locality_verbose: PropTypes.string,
     cuisines: PropTypes.string,
     thumb_url: PropTypes.string,
-    menuUrl: PropTypes.string,
-    photosUrl: PropTypes.string,
-    averageCostForTwo: PropTypes.number,
-    priceRange: PropTypes.number,
+    menu_url: PropTypes.string,
+    photos_url: PropTypes.string,
+    average_cost_for_two: PropTypes.number,
+    price_range: PropTypes.number,
     currency: PropTypes.string,
   }).isRequired,
 };
