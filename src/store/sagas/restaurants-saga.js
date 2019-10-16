@@ -13,6 +13,7 @@ function* findRestaurant({ payload }) {
       `/search?entity_id=${entityId}&entity_type=${entityType}&cuisines=${cuisinesIdsString}&category=${categoryIdsString}`,
     );
 
+    // Normalizing the restuarants list
     const restaurants = response.data.restaurants.map(({ restaurant }) => ({
       id: restaurant.id,
       name: restaurant.name,
@@ -21,8 +22,14 @@ function* findRestaurant({ payload }) {
       phoneNumbers: restaurant.phone_numbers,
       address: restaurant.location.address,
       locality: restaurant.location.locality,
+      localityVerbose: restaurant.location.locality_verbose,
       cuisines: restaurant.cuisines,
       thumb_url: restaurant.thumb,
+      menuUrl: restaurant.menu_url,
+      photosUrl: restaurant.photos_url,
+      currency: restaurant.currency,
+      averageCostForTwo: restaurant.average_cost_for_two,
+      priceRange: restaurant.price_range,
     }));
     yield put(restaurantsModule.loadedRestaurants(restaurants));
   } catch (error) {
