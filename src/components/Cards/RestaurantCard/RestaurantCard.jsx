@@ -25,10 +25,12 @@ const RestaurantCard = ({ restaurant, ...otherProps }) => (
           <Card.Description>
             <br />
             <Icon name="map marker alternate" />
+            <b>Address: </b>
             {restaurant.address}
             <br />
             <Icon name="food" />
-            Cuisines: [
+            <b>Cuisines: </b>
+            [
             {restaurant.cuisines}
             ]
           </Card.Description>
