@@ -65,7 +65,7 @@ const MainSearchBar = ({
       ) : (
         <>
           <Message>
-            Unable to load categories and cuisines type, please check you rinternet connection
+            Unable to load categories and cuisine types, please check your internet connection and
             {' '}
             <Button icon="redo" content="Reload" onClick={onReload} />
           </Message>
