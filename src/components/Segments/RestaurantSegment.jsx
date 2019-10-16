@@ -2,15 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Segment, Header, Container, Rating,
+  Segment, Header, Container, Rating, Icon,
 } from 'semantic-ui-react';
 
 const RestaurantSegment = ({ restaurant, ...otherProps }) => (
   <Segment {...otherProps}>
     <Header as="h5">{restaurant.name}</Header>
-    <p>{restaurant.locality}</p>
+    <Rating rating={parseInt(restaurant.rating, 10)} maxRating={5} icon="star" disabled />
     <Container>
-      <Rating rating={parseInt(restaurant.rating, 10)} maxRating={5} icon="star" disabled />
+      <p>{restaurant.locality}</p>
+      <Icon name="food" />
+      <b>Cuisines: </b>
+      {' '}
+      {restaurant.cuisines}
     </Container>
   </Segment>
 );
