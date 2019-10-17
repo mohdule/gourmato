@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, Rating, Image, Grid, Header, Icon, List,
+  Card, Rating, Image, Grid, Header, List,
 } from 'semantic-ui-react';
 
 import './restaurantCard.css';
