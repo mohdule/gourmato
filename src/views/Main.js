@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Container, Header, Loader, Divider, Dropdown, Dimmer,
+  Container, Header, Loader, Divider, Dropdown, Dimmer, Rating,
 } from 'semantic-ui-react';
 
 import { loadSuggestions, setLocation } from '../store/modules/location';
@@ -114,6 +114,24 @@ const Main = () => {
     return setItems(restaurants);
   };
 
+  const filterItems = (e, { value }) => {
+    e.preventDefault();
+    switch (value) {
+      case 5:
+        return setItems(items.slice(0).filter((item) => item.rating >= value));
+      case 4:
+        return setItems(items.slice(0).filter((item) => item.rating >= value));
+      case 3:
+        return setItems(items.slice(0).filter((item) => item.rating >= value));
+      case 2:
+        return setItems(items.slice(0).filter((item) => item.rating >= value));
+      case 1:
+        return setItems(items.slice(0).filter((item) => item.rating >= value));
+      default:
+        return setItems(restaurants);
+    }
+  };
+
   // Props prepreation
   const searchProps = {
     location: {
@@ -134,6 +152,25 @@ const Main = () => {
     { key: 'default', value: 'default', text: 'Default' },
     { key: 'high-rating', value: 'htl', text: 'Rating: High to low' },
     { key: 'low-rating', value: 'lth', text: 'Rating: Low to high' },
+  ];
+
+  const filterOptions = [
+    { key: 'default', value: 'default', text: 'Default' },
+    {
+      key: 'five', value: 5, content: <Rating defaultRating={5} maxRating={5} disabled />, text: '5 starts only',
+    },
+    {
+      key: 'four', value: 4, content: <Rating defaultRating={4} maxRating={5} disabled />, text: '4 starts only',
+    },
+    {
+      key: 'three', value: 3, content: <Rating defaultRating={3} maxRating={5} disabled />, text: '3 starts only',
+    },
+    {
+      key: 'two', value: 2, content: <Rating defaultRating={2} maxRating={5} disabled />, text: '2 starts only',
+    },
+    {
+      key: 'one', value: 1, content: <Rating defaultRating={1} maxRating={5} disabled />, text: '1 start only',
+    },
   ];
 
   // --------------|
@@ -168,15 +205,23 @@ const Main = () => {
                     getCuisines={loadAllCuisines}
                   />
                   <Divider />
-              Sort by:
+                  Sort by:
                   {' '}
                   {' '}
                   <Dropdown
-                    labeled
                     inline
                     options={sortOptions}
                     defaultValue={sortOptions[0].value}
                     onChange={sortItems}
+                  />
+                  |
+                  Filter By:
+                  {' '}
+                  <Dropdown
+                    inline
+                    options={filterOptions}
+                    defaultValue={filterOptions[0].value}
+                    onChange={filterItems}
                   />
                   <RestaurantsList restaurants={items} loading={restaurantsLoading} />
                   <Fab circular />
