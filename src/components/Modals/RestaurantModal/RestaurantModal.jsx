@@ -34,30 +34,44 @@ const RestaurantModal = ({ restaurant, trigger }) => (
           <List>
             <List.Item>
               <List.Icon name="map marker" />
-              {restaurant.address}
+              <List.Content>
+                <b>Address: </b>
+                {restaurant.address}
+              </List.Content>
             </List.Item>
             <List.Item>
               <List.Icon name="phone" />
-              {Array.isArray(restaurant.phone_numbers) ? restaurant.phone_numbers.join(' / ') : restaurant.phone_numbers}
+              <List.Content>
+                <b>Phone Numbers: </b>
+                {Array.isArray(restaurant.phone_numbers) ? restaurant.phone_numbers.join(' / ') : restaurant.phone_numbers}
+              </List.Content>
             </List.Item>
           </List>
         </Grid.Column>
         <Grid.Column width={8}>
-          <List.Item>
-            <List.Icon name="money" />
-            <b>Average Cost For Two: </b>
-            {restaurant.average_cost_for_two ? `${restaurant.average_cost_for_two} ${restaurant.currency}` : 'unknown'}
-          </List.Item>
-          <List.Item>
-            <List.Icon name="money" />
-            <b>Price range: </b>
-            {restaurant.price_range ? `${restaurant.price_range} ${restaurant.currency}` : 'unknown'}
-          </List.Item>
-          <List.Item>
-            <List.Icon name="food" />
-            <b>Cuisines: </b>
-            {restaurant.cuisines}
-          </List.Item>
+          <List>
+            <List.Item>
+              <List.Icon name="money" />
+              <List.Content>
+                <b>Average Cost For Two: </b>
+                {restaurant.average_cost_for_two ? `${restaurant.average_cost_for_two} ${restaurant.currency}` : 'unknown'}
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name="money" />
+              <List.Content>
+                <b>Price range: </b>
+                {restaurant.price_range ? `${restaurant.price_range} ${restaurant.currency}` : 'unknown'}
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Icon name="food" />
+              <List.Content>
+                <b>Cuisines: </b>
+                {restaurant.cuisines}
+              </List.Content>
+            </List.Item>
+          </List>
         </Grid.Column>
       </Grid>
     </Modal.Content>
