@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Popup } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import './fab.css';
 
 const Fab = ({
   iconName, content, circular, color, size, handleClick,
 }) => (
-  <Popup
-    content="Scroll To Top"
-    position="left center"
-    trigger={(
-      <Button
-        icon={iconName}
-        content={content || null}
-        circular={circular}
-        color={color}
-        size={size}
-        className="fab"
-        onClick={handleClick}
-      />
-)}
+  <Button
+    icon={iconName}
+    content={content || null}
+    circular={circular}
+    color={color}
+    size={size}
+    className="fab"
+    onClick={handleClick}
   />
 );
 
