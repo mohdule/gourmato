@@ -23,6 +23,7 @@ export default function (state = initialState, { type, payload }) {
       return {
         ...state,
         loading: true,
+        error: '',
       };
     case TYPES.GET_CUISINES_SUCCESS:
       return {
