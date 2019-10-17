@@ -5,7 +5,7 @@ import axios from '../../axios';
 const normalizeResturants = (restaurants) => restaurants.map(({ restaurant }) => ({
   id: restaurant.id,
   name: restaurant.name,
-  rating: restaurant.user_rating.aggregate_rating,
+  rating: parseFloat(restaurant.user_rating.aggregate_rating),
   highlights: restaurant.highlights,
   phone_numbers: restaurant.phone_numbers,
   address: restaurant.location.address,

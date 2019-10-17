@@ -104,11 +104,11 @@ const Main = () => {
     e.preventDefault();
     if (value === 'htl') {
       return setItems(
-        items.slice(0).sort((a, b) => parseFloat(b.rating, 10) - parseFloat(a.rating, 10)),
+        items.slice(0).sort((a, b) => b.rating - a.rating),
       );
     } if (value === 'lth') {
       return setItems(
-        items.slice(0).sort((a, b) => parseFloat(a.rating, 10) - parseFloat(b.rating, 10)),
+        items.slice(0).sort((a, b) => a.rating - b.rating),
       );
     }
     return setItems(restaurants);

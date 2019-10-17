@@ -56,7 +56,7 @@ RestaurantCard.propTypes = {
   restaurant: PropTypes.shape({
     name: PropTypes.string,
     locality: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
     address: PropTypes.string,
     cuisines: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string),
