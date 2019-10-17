@@ -12,7 +12,7 @@ import './restaurantsList.css';
 const CardGroup = ({ items }) => (
   items.length
     ? (
-      <Card.Group itemsPerRow={2} id="itemsContainer">
+      <Card.Group id="itemsContainer" itemsPerRow={2}>
         {items.map((el) => (
           <RestaurantModal
             key={el.id}
