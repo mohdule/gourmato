@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Container, Header, Loader, Divider, Dropdown,
+  Container, Header, Loader, Divider, Dropdown, Dimmer,
 } from 'semantic-ui-react';
 
 import { loadSuggestions, setLocation } from '../store/modules/location';
@@ -140,7 +140,7 @@ const Main = () => {
   // Render Return |
   // --------------|
   return (
-    <>
+    <Container>
       <Navbar
         locationSearchProps={searchProps.location}
         restaurantSearchProps={searchProps.restaurant}
@@ -149,7 +149,11 @@ const Main = () => {
       <Container id="mainContainer">
         <Header content={`Find the best restaurants, cafés, and bars in ${currentLocation.country_name}`} />
         {cuisinesLoading || categoriesLoading
-          ? <Loader active content="Please wait..." />
+          ? (
+            <Dimmer active>
+              <Loader content="Please wait..." />
+            </Dimmer>
+          )
           : (
             <>
               {cuisinesError || categoriesError ? (
@@ -181,7 +185,7 @@ const Main = () => {
             </>
           )}
       </Container>
-    </>
+    </Container>
   );
 };
 
