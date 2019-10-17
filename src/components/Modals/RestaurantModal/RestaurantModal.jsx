@@ -87,7 +87,7 @@ RestaurantModal.propTypes = {
   restaurant: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
     highlights: PropTypes.arrayOf(PropTypes.string),
     phone_numbers: PropTypes.string,
     address: PropTypes.string,
