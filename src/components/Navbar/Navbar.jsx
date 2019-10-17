@@ -10,9 +10,6 @@ const Navbar = ({ locationSearchProps, restaurantSearchProps }) => (
   <Menu id="navbar" borderless inverted fixed="top">
     <Container>
       <Menu.Item>
-        <Menu.Header as="h1" content="Gourmato" />
-      </Menu.Item>
-      <Menu.Item>
         <RestaurantSearch
           suggestions={restaurantSearchProps.suggestions}
           loading={restaurantSearchProps.loading}
