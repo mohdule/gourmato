@@ -10,9 +10,10 @@ import { loadCategories } from '../store/modules/categories';
 import { loadCuisines } from '../store/modules/cuisines';
 
 import Navbar from '../components/Navbar/Navbar';
-import Fab from '../components/Buttons/Fab/Fab';
+import InternetIssueSegment from '../components/Segments/InternetIssueSegment';
 import MainSearchBar from '../components/Search/MainSearchBar/MainSearchBar';
 import RestaurantsList from '../components/Listing/RestaurantList';
+import Fab from '../components/Buttons/Fab/Fab';
 
 const Main = () => {
   // ------------|
@@ -30,10 +31,12 @@ const Main = () => {
 
   // => Categories
   const categories = useSelector((state) => state.categories.all);
+  const categoriesError = useSelector((state) => state.categories.error);
   const categoriesLoading = useSelector((state) => state.categories.loading);
 
   // => Cuisines
   const cuisines = useSelector((state) => state.cuisines.all);
+  const cuisinesError = useSelector((state) => state.cuisines.error);
   const cuisinesLoading = useSelector((state) => state.cuisines.loading);
 
   // => Restaurants
@@ -93,6 +96,10 @@ const Main = () => {
   // ---------|
   // Handlers |
   // ---------|
+  const onReload = () => {
+    loadAllCategories();
+    loadAllCuisines();
+  };
   const sortItems = (e, { value }) => {
     e.preventDefault();
     if (value === 'htl') {
@@ -145,26 +152,32 @@ const Main = () => {
           ? <Loader active content="Please wait..." />
           : (
             <>
-              <MainSearchBar
-                categories={categories}
-                cuisines={cuisines}
-                search={findRestaurants}
-                getCategories={loadAllCategories}
-                getCuisines={loadAllCuisines}
-              />
-              <Divider />
+              {cuisinesError || categoriesError ? (
+                <InternetIssueSegment reload={onReload} />
+              ) : (
+                <>
+                  <MainSearchBar
+                    categories={categories}
+                    cuisines={cuisines}
+                    search={findRestaurants}
+                    getCategories={loadAllCategories}
+                    getCuisines={loadAllCuisines}
+                  />
+                  <Divider />
               Sort by:
-              {' '}
-              {' '}
-              <Dropdown
-                labeled
-                inline
-                options={sortOptions}
-                defaultValue={sortOptions[0].value}
-                onChange={sortItems}
-              />
-              <RestaurantsList restaurants={items} loading={restaurantsLoading} />
-              <Fab circular />
+                  {' '}
+                  {' '}
+                  <Dropdown
+                    labeled
+                    inline
+                    options={sortOptions}
+                    defaultValue={sortOptions[0].value}
+                    onChange={sortItems}
+                  />
+                  <RestaurantsList restaurants={items} loading={restaurantsLoading} />
+                  <Fab circular />
+                </>
+              )}
             </>
           )}
       </Container>
