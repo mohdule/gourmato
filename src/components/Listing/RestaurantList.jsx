@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import {
   Card, Loader, Message, Container,
 } from 'semantic-ui-react';
+
 import RestaurantModal from '../Modals/RestaurantModal/RestaurantModal';
 import RestaurantCard from '../Cards/RestaurantCard/RestaurantCard';
+
+import './restaurantsList.css';
 
 const CardGroup = ({ items }) => (
   items.length
     ? (
-      <Card.Group itemsPerRow={2}>
+      <Card.Group itemsPerRow={2} id="itemsContainer">
         {items.map((el) => (
           <RestaurantModal
             key={el.id}
@@ -28,7 +31,7 @@ CardGroup.propTypes = {
 
 // The Actual Card Group List
 const RestaurantList = ({ restaurants, loading }) => (
-  <Container fluid>
+  <Container>
     {loading
       ? <Loader active content="Searching..." />
       : (
