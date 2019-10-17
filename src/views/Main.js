@@ -118,15 +118,15 @@ const Main = () => {
     e.preventDefault();
     switch (value) {
       case 5:
-        return setItems(items.slice(0).filter((item) => item.rating >= value));
+        return setItems(items.slice(0).filter((item) => Math.floor(item.rating) >= value));
       case 4:
-        return setItems(items.slice(0).filter((item) => item.rating >= value));
+        return setItems(items.slice(0).filter((item) => Math.floor(item.rating) >= value));
       case 3:
-        return setItems(items.slice(0).filter((item) => item.rating >= value));
+        return setItems(items.slice(0).filter((item) => Math.floor(item.rating) >= value));
       case 2:
-        return setItems(items.slice(0).filter((item) => item.rating >= value));
+        return setItems(items.slice(0).filter((item) => Math.floor(item.rating) >= value));
       case 1:
-        return setItems(items.slice(0).filter((item) => item.rating >= value));
+        return setItems(items.slice(0).filter((item) => Math.floor(item.rating) >= value));
       default:
         return setItems(restaurants);
     }
