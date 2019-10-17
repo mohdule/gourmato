@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, Rating, Image, Grid, Header, Icon,
+  Card, Rating, Image, Grid, Header, Icon, List,
 } from 'semantic-ui-react';
 
 import './restaurantCard.css';
@@ -27,16 +27,24 @@ const RestaurantCard = ({ restaurant, ...otherProps }) => (
             )
           </Card.Header>
           <Card.Description>
-            <br />
-            <Icon name="map marker alternate" />
-            <b>Address: </b>
-            {restaurant.address}
-            <br />
-            <Icon name="food" />
-            <b>Cuisines: </b>
-            [
-            {restaurant.cuisines}
-            ]
+            <List>
+              <List.Item>
+                <List.Icon name="map marker alternate" />
+                <List.Content>
+                  <b>Address: </b>
+                  {restaurant.address}
+                </List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name="food" />
+                <List.Content>
+                  <b>Cuisines: </b>
+                    [
+                  {restaurant.cuisines}
+                    ]
+                </List.Content>
+              </List.Item>
+            </List>
           </Card.Description>
         </Grid.Column>
       </Grid>
