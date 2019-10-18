@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f83e53d-29df-4b35-8923-8d7281645e19/deploy-status)](https://app.netlify.com/sites/sleepy-kalam-950088/deploys)
+
 # GOURMATO
 Gourmato is a web application that helps you find nearby restaurants, leveraging the [Zomato API](https://developers.zomato.com/documentation)  
 _Note: (This is built in 2 days, bare with me i will make awesome :)_
