@@ -2,23 +2,22 @@
 
 # GOURMATO
 Gourmato is a web application that helps you find nearby restaurants, leveraging the [Zomato API](https://developers.zomato.com/documentation)  
-_Note: (This is built in 2 days, bare with me i will make awesome :)_
+_Note: (This is built in 2 days, bare with me i will make it awesome :)_
 
 # Todo :
   - [x] ES6 & React
   - [x] Eslint + Airbnb Style guide
   - [x] Redux + Redux-Saga
   - [x] Semantic UI React
-  - [ ] Responsive
+  - [x] Responsive
   - [ ] Use Navigator API to get user location
   - [ ] Pagination
   - [ ] Unit testing
 
 
 # Prerequesties :
-Make sure you have these tools installed :
   - Node v10.x
-  - Npm -v 6.x
+  - NPM -v6.x
 
 # Getting started :
   - Clone repo
